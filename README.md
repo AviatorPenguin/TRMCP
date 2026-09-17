@@ -13,9 +13,11 @@ endpoints: it's a read-only, officially-supported export.
 
 1. Log in at [trainerroad.com](https://www.trainerroad.com) and go to
    **https://www.trainerroad.com/profile/calendar-sync**.
-2. Copy your calendar subscription URL. It looks like
-   `webcal://api.trainerroad.com/api/calendar/....ics`.
-3. Keep it secret — anyone with the URL can see your training calendar.
+2. Copy your calendar subscription URL. It's typically an `https://` link shaped like
+   `https://api.trainerroad.com/v1/calendar/ics/<your-uuid>` (some calendar apps may show
+   it with a `webcal://` scheme instead — both work here).
+3. Keep it secret — anyone with the URL can see your training calendar. Don't commit it,
+   paste it into shared chats, or put it anywhere other than your local MCP config/env.
 
 ## 2. Install
 
@@ -40,7 +42,7 @@ or `.mcp.json`):
       "command": "uv",
       "args": ["--directory", "/absolute/path/to/trmcp", "run", "trmcp"],
       "env": {
-        "TRAINERROAD_CALENDAR_URL": "webcal://api.trainerroad.com/api/calendar/....ics"
+        "TRAINERROAD_CALENDAR_URL": "https://api.trainerroad.com/v1/calendar/ics/your-uuid-here"
       }
     }
   }
@@ -50,7 +52,7 @@ or `.mcp.json`):
 Or run it directly for local testing:
 
 ```bash
-TRAINERROAD_CALENDAR_URL="webcal://api.trainerroad.com/api/calendar/....ics" uv run trmcp
+TRAINERROAD_CALENDAR_URL="https://api.trainerroad.com/v1/calendar/ics/your-uuid-here" uv run trmcp
 ```
 
 ### Configuration
